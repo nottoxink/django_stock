@@ -1,3 +1,5 @@
+#Copy Right(c) 2019-2020 notto All Rights Reserved
+
 from django.shortcuts import render, redirect
 from .models import Stock
 from .form import StockForm
@@ -38,7 +40,7 @@ def add_stock(request):
 		ticker = Stock.objects.all()
 		output = []
 		for ticker_item in ticker:
-			api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ ticker_item +"/quote?token=pk_554d557b0760433ab7b9e90c3834c4dc")
+			api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ str(ticker_item) +"/quote?token=pk_554d557b0760433ab7b9e90c3834c4dc")
 			try:
 				api = json.loads(api_request.content)
 				output.append(api)
